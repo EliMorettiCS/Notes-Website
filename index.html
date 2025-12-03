@@ -1,8 +1,36 @@
 <html>
     <head>
+        <link rel="stylesheet" href="main.css">
         <title>Satori Notes</title>
     </head>
     <body>
-        <h1>Satori Notes</h1>
+        <h1 id="kms">Satori Notes</h1>
+        <h2>Simply Notes</h2>
+        <hr>
+        <div id="selectedNote">
+            <form action="Note">
+                <input type="text" id="title" name="title" placeholder="Title" size="18" value="e">
+                <input type="text" id="date" name="date" placeholder="Date" readonly>
+                <textarea type="text" id="contents" name="contents" placeholder="Type Your Note Here:" autofocus rows="10"></textarea>
+                <input type="submit" value="Save" id="save">
+            </form>
+        </div>
+        <div id="notes">
+            <button>Wow this note is so cool!</button>
+            <button>Wow this note is so cool!</button>
+            <button>Wow this note is so cool!</button>
+            <button>Wow this note is so cool!</button>
+            <button>Wow this note is so cool!</button>
+            <button>Wow this note is so cool!</button>
+            <button>Wow this note is so cool!</button>
+        </div>
+        <div id="options">
+            <button><img src="plus-symbol.png" alt="plus symbol" width="20"></button>
+            <button><img src="save-symbol.png" alt="save symbol" width="20"></button>
+            <button><img src="date-symbol.png" alt="save symbol" width="20"></button>
+            <button><img src="sort-symbol.png" alt="sort symbol" width="20"></button>
+            <button>A-Z</button>
+        </div>
+    <script src="main.js"></script>
     </body>
 </html>

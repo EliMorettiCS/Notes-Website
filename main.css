@@ -1,0 +1,185 @@
+body {
+    color:#141618;
+    background-color: rgb(255, 255, 255);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+input:focus {
+    outline: none;
+}
+hr {
+    border: .9px solid ;
+}
+#notes {
+    display:flex;
+    border-width: 5px;
+    border-style:solid;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow:-1px -1px, -2px -2px,-3px -3px;
+    background-color: rgb(47, 47, 47);
+    transition: padding .1s, scrollbar-color .3s;
+    transition-timing-function: ease-in-out;
+    overflow: auto;
+    scrollbar-width: auto;
+    scrollbar-color: #141618 #141618;
+}
+
+#notes:hover{
+    border-width: 5px;
+    border-style:solid;
+    border-radius: 10px;
+    box-shadow:-1px -1px, -2px -2px,-3px -3px;
+    scrollbar-color: rgb(51, 51, 51) #141618;
+}
+button {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+#notes button {
+    flex-flow: row nowrap;
+    flex-grow:0;
+    flex-shrink: 0;
+    margin: 5px;
+    border-width: 3px;
+    border-style:solid;
+    border-radius: 5px;
+    box-shadow:1px 1px, 2px 2px,3px 3px;
+    transition: box-shadow .1s, translate .1s, filter .05s;
+    transition-timing-function: ease-in-out;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    
+}
+#notes button:hover {
+    border-width: 3px;
+    border-style:solid;
+    border-radius: 5px;
+    box-shadow:1px 1px, 2px 2px,3px 3px, 4px 4px, 5px 5px;
+    filter:drop-shadow(1px 1px rgb(255, 255, 255))drop-shadow(-1px -1px white)
+    drop-shadow(-1px 1px white)drop-shadow(2px -1px white);
+    translate:0px -2px;
+    
+}
+
+#options {
+    border-radius: 50px;
+    padding: 5px;
+    margin: 10px;
+    display: flex;
+    justify-content:center;
+    flex-wrap:nowrap;
+}
+
+#options button{
+    margin: 5px;
+    border-width: 3px;
+    border-style:solid;
+    border-radius: 15px;
+    box-shadow:1px 1px, 2px 2px,3px 3px;
+    transition: box-shadow .1s, translate .1s, filter .1s;
+    transition-timing-function: ease-in-out;
+    padding: 6px;
+    background-color: rgb(255, 255, 255);
+    color:black;
+    flex-shrink:0;
+}
+
+#options button:hover {
+    border-width: 3px;
+    border-style:solid;
+    box-shadow:1px 1px, 2px 2px,3px 3px, 4px 4px, 5px 5px;
+    filter:drop-shadow(1px 1px rgb(255, 255, 255))drop-shadow(-1px -1px white)
+    drop-shadow(-1px 1px white)drop-shadow(2px -1px white);
+    translate:0px -2px;;
+}
+
+#selectedNote {
+    border: solid #141618 5px ;
+    background-color: rgb(47, 47, 47);
+    border-radius: 15px;
+    padding: 10px;
+    margin: 10px;
+    margin-bottom: 30px;
+    box-shadow:0px 20px;
+}
+
+#selectedNote form {
+    display:flex;
+    flex-direction:column;
+    row-gap: 10px;
+}
+
+#contents {
+    border-style: solid;
+    border-width: 4px;
+    border-radius: 20px;
+    border-color:#141618;
+    transition: border-radius .3s, border-color .3s, border-width .3s, scrollbar-color .1s;
+    transition-timing-function: ease-in-out;
+    scrollbar-width:thin;
+    scrollbar-color: rgba(59, 59, 59, 0) rgba(128, 0, 255, 0);
+}
+#contents:focus {
+    border-radius: 10px;
+    border-color: rgb(237, 237, 237);
+    border-width: 2px;
+    scrollbar-color: rgb(237, 237, 237) rgba(128, 0, 255, 0);
+}
+
+#date{
+    border-style: solid;
+    border-color: #000000;
+    border-width: 0px;
+    background-color: #00000000;
+    color: rgb(77, 77, 77);
+    font-size: 15px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+#title {
+    border-style: solid;
+    border-color: #00000000;
+    border-width: 1px;
+    background-color: #00000000;
+    color: rgb(245, 252, 206);
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: border-color .2s;
+    transition-timing-function: ease-in-out;
+}
+
+#title:focus {
+    border-color: rgb(77, 77, 77);
+}
+
+#save {
+    margin: 5px;
+    border-width: 3px;
+    border-style:solid;
+    border-radius: 5px;
+    box-shadow:0px 8px;
+    transition: box-shadow .1s, translate .1s, filter .05s;
+    transition-timing-function: ease-in-out;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: large;
+}
+#save:hover {
+    border-width: 3px;
+    border-style:solid;
+    box-shadow:0px 13px;
+    filter:drop-shadow(1px 1px rgb(255, 255, 255))drop-shadow(-1px -1px white)
+    drop-shadow(-1px 1px white)drop-shadow(2px -1px white);
+    translate:0px -2px;;
+}
+
+textarea{
+    font-size: 18px;
+    resize:none;
+    padding:10px;
+    color: #141618;
+    outline: none;
+}
