@@ -23,6 +23,12 @@ let templateNote = {
         },
         giveDate : function() {
             return this.date;
+        },
+        changeTitle : function(newTitle) {
+            this.title = newTitle;
+        },
+        changeText : function(newText) {
+            this.text = newText;
         }
 }
 function logNote(findNum) {
@@ -34,12 +40,25 @@ function createNote() {
     notesCreated=notesCreated+1;
 }
 
-createNote()
-createNote()
-createNote()
-logNote(1);
-console.log(notes[1].giveTitle())
+function selectNote(noteNum) {
+    document.getElementById("title").value = notes[noteNum].giveTitle();
+    document.getElementById("date").value = notes[noteNum].giveDate();
+    document.getElementById("contents").value = notes[noteNum].giveText();
+    const notesContainer = document.getElementById("notes");
+    notesContainer.innerHTML = "";
+    notes.forEach((note) => {
+        const btn = document.createElement("button");
+        btn.textContent = note.giveTitle();
+        if (notes.indexOf(note) == noteNum) {
+            btn.id="selected";
+        }
+        notesContainer.appendChild(btn);
+    });
 
-document.getElementById("title").value = notes[1].giveTitle();
-document.getElementById("date").value = notes[1].giveDate();
-document.getElementById("contents").value = notes[1].giveText();
+}
+
+createNote();
+createNote();
+createNote();
+notes[1].changeTitle("Wow")
+selectNote(1);
