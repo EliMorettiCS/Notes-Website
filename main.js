@@ -68,12 +68,10 @@ document.getElementById("save").onclick = function() {
     console.log("Save Button Clicked")
     notes[currentNote].changeTitle(document.getElementById("title").value)
     notes[currentNote].changeText(document.getElementById("contents").value)
+    localStorage.setItem("notes", JSON.stringify(notes));
 }
 
 
 createNote();
-createNote();
-createNote();
 selectNote(currentNote);
 
-console.log(JSON.parse(JSON.stringify(notes)));
