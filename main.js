@@ -5,6 +5,7 @@ let simpleDate = currentDate.getFullYear()+"/"+currentDate.getDate()+"/"+current
 let notesAmount = 0;
 let notesCreated = 0;
 let Userinput = "";
+let currentNote = 0;
 let notes = [
 ]
 let templateNote = {
@@ -48,7 +49,11 @@ function selectNote(noteNum) {
     notesContainer.innerHTML = "";
     notes.forEach((note) => {
         const btn = document.createElement("button");
-        btn.textContent = note.giveTitle();
+        btn.textContent = note.giveTitle()+" ("+notes.indexOf(note)+")";
+        btn.name="name:"+notes.indexOf(note); // NOTE NAME IS name:NUMBER (name:1,name:27)
+        btn.onclick = function() {
+            selectNote(notes.indexOf(note));
+        }
         if (notes.indexOf(note) == noteNum) {
             btn.id="selected";
         }
@@ -57,8 +62,18 @@ function selectNote(noteNum) {
 
 }
 
+
+
+document.getElementById("save").onclick = function() {
+    console.log("Save Button Clicked")
+    notes[currentNote].changeTitle(document.getElementById("title").value)
+    notes[currentNote].changeText(document.getElementById("contents").value)
+}
+
+
 createNote();
 createNote();
 createNote();
-notes[1].changeTitle("Wow")
-selectNote(1);
+selectNote(currentNote);
+
+console.log(JSON.parse(JSON.stringify(notes)));

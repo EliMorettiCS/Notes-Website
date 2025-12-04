@@ -4,16 +4,14 @@
         <title>Satori Notes</title>
     </head>
     <body>
-        <h1 id="kms">Satori Notes</h1>
+        <h1>Satori Notes</h1>
         <h2>Simply Notes</h2>
         <hr>
         <div id="selectedNote">
-            <form action="">
-                <input type="text" id="title" name="title" placeholder="Title" size="18">
-                <input type="text" id="date" name="date" placeholder="Date" readonly>
-                <textarea type="text" id="contents" name="contents" placeholder="Type Your Note Here:" autofocus rows="10"></textarea>
-                <input type="submit" value="Save" id="save">
-            </form>
+                <textarea id="title" placeholder="Title" rows="1"></textarea>
+                <textarea id="date" placeholder="Date" readonly rows="1"></textarea>
+                <textarea id="contents" name="contents" placeholder="Type Your Note Here:" autofocus rows="5"></textarea>
+                <button id="save">Save</button>
         </div>
         <div id="notes">
             <p>It seems you have been met with a terrible fate... (ERROR: No Notes To Display)</p>

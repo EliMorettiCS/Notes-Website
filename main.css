@@ -101,6 +101,9 @@ button {
 }
 
 #selectedNote {
+    display:flex;
+    flex-direction:column;
+    row-gap: 10px;
     border: solid #141618 5px ;
     background-color: rgb(47, 47, 47);
     border-radius: 15px;
@@ -108,12 +111,6 @@ button {
     margin: 10px;
     margin-bottom: 30px;
     box-shadow:0px 20px;
-}
-
-#selectedNote form {
-    display:flex;
-    flex-direction:column;
-    row-gap: 10px;
 }
 
 #contents {
