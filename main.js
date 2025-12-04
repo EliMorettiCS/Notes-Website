@@ -1,7 +1,7 @@
 console.clear()
 console.log("Program Started")
-let currentDate = new Date();
-let simpleDate = currentDate.getFullYear()+"/"+currentDate.getDate()+"/"+currentDate.getMonth()
+let currentDate = new Date()
+let simpleDate = currentDate.toLocaleDateString("en-us")
 let notesAmount = 0;
 let notesCreated = 0;
 let Userinput = "";
@@ -30,6 +30,9 @@ let templateNote = {
         },
         changeText : function(newText) {
             this.text = newText;
+        },
+        changeDate : function(newDate) {
+            this.date = newDate;
         }
 }
 function logNote(findNum) {
@@ -42,6 +45,7 @@ function createNote() {
 }
 
 function selectNote(noteNum) {
+    currentNote = noteNum
     document.getElementById("title").value = notes[noteNum].giveTitle();
     document.getElementById("date").value = notes[noteNum].giveDate();
     document.getElementById("contents").value = notes[noteNum].giveText();
@@ -62,16 +66,43 @@ function selectNote(noteNum) {
 
 }
 
+document.getElementById("newNote").onclick = function() {
+    createNote()
+    selectNote(notes.length-1)
+    notes[currentNote].changeTitle(document.getElementById("title").value)
+    notes[currentNote].changeText(document.getElementById("contents").value)
+    localStorage.setItem("cloudNotes", JSON.stringify(notes));
+}
+
+document.getElementById("deleteNote").onclick = function() {
+    notes = notes.splice(0,currentNote)
+    selectNote(notes.length-1)
+    notes[currentNote].changeTitle(document.getElementById("title").value)
+    notes[currentNote].changeText(document.getElementById("contents").value)
+    localStorage.setItem("cloudNotes", JSON.stringify(notes));
+}
 
 
 document.getElementById("save").onclick = function() {
     console.log("Save Button Clicked")
     notes[currentNote].changeTitle(document.getElementById("title").value)
     notes[currentNote].changeText(document.getElementById("contents").value)
-    localStorage.setItem("notes", JSON.stringify(notes));
+    localStorage.setItem("cloudNotes", JSON.stringify(notes));
 }
 
 
-createNote();
-selectNote(currentNote);
 
+
+let cloudNotes = JSON.parse(localStorage.getItem("cloudNotes"))
+notes = []
+cloudNotes.forEach((cloudNote) => {
+    let cloudNoteTitle = cloudNote.title;
+    let cloudNoteContent = cloudNote.text;
+    let cloudNoteDate = cloudNote.date;
+    notes.push({...templateNote});
+    notes[notes.length-1].changeTitle(cloudNoteTitle);
+    notes[notes.length-1].changeText(cloudNoteContent);
+    notes[notes.length-1].changeDate(cloudNoteDate);
+})
+
+selectNote(notes.length-1)
