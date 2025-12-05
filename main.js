@@ -9,8 +9,8 @@ let currentNote = 0;
 let notes = [
 ]
 let templateNote = {
-    title:"Template Note Title",
-        text:"This is the contexts of the template note",
+    title:"",
+        text:"",
         date:simpleDate,
         logSelf : function() {
             console.log(" --"+this.title+"--"+" Created On:"+this.date)
@@ -53,7 +53,12 @@ function selectNote(noteNum) {
     notesContainer.innerHTML = "";
     notes.forEach((note) => {
         const btn = document.createElement("button");
-        btn.textContent = note.giveTitle()+" ("+notes.indexOf(note)+")";
+        if (note.giveTitle() == "") {
+            btn.textContent = "Untitled";
+        }
+        else{
+            btn.textContent = note.giveTitle();
+        }
         btn.name="name:"+notes.indexOf(note); // NOTE NAME IS name:NUMBER (name:1,name:27)
         btn.onclick = function() {
             selectNote(notes.indexOf(note));
@@ -88,6 +93,15 @@ document.getElementById("save").onclick = function() {
     notes[currentNote].changeTitle(document.getElementById("title").value)
     notes[currentNote].changeText(document.getElementById("contents").value)
     localStorage.setItem("cloudNotes", JSON.stringify(notes));
+    selectNote(currentNote)
+}
+
+document.getElementById("settings").onclick = function() {
+    document.getElementById("settingsPopup").style.display="flex"
+}
+
+document.getElementById("settingsExit").onclick = function() {
+    document.getElementById("settingsPopup").style.display="none"
 }
 
 

@@ -17,11 +17,40 @@
             <p>It seems you have been met with a terrible fate... (ERROR: No Notes To Display)</p>
         </div>
         <div id="options">
-            <button><img src="plus-symbol.png" alt="plus symbol" width="20" id="newNote"></button>
-            <button id="deleteNote">Delete</button>
-            <button><img src="date-symbol.png" alt="date symbol" width="20"></button>
-            <button><img src="sort-symbol.png" alt="sort symbol" width="20"></button>
-            <button><img src="search-symbol.png" alt="search symbol" width="20"></button>
+            <button><img src="plus-symbol.png" alt="plus symbol" width="30" id="newNote" title="Shortcut"></button>
+            <button> <img src="delete-symbol.png"alt="delete symbol" width="30" id="deleteNote" title="Shortcut"></button>
+            <!-- <button> <img src="clear-symbol.png"alt="clear symbol" width="30" id="clearNotes" title="Shortcut"></button> -->
+            <button id="settings" title="Shortcut"><img src="settings-symbol.png"alt="settings symbol" width="30"></button>
+            <!-- <button><img src="date-symbol.png" alt="date symbol" width="20"></button> -->
+            <!-- <button><img src="sort-symbol.png" alt="sort symbol" width="20"></button> -->
+            <!-- <button><img src="search-symbol.png" alt="search symbol" width="20"></button> -->
+        </div>
+        <div id="settingsPopup" class="popup">
+            <div id="PopupContainer">
+                <h1>Settings</h1>
+                <hr>
+                <h2>Accessibility</h2>
+                <button>Setting 1</button>
+                <button>Setting 2</button>
+                <button>Setting 3</button>
+                <h2>Visual</h2>
+                <button>Setting 1</button>
+                <button>Setting 2</button>
+                <button>Setting 3</button>
+                <h2>Audio</h2>
+                <button>Setting 1</button>
+                <button>Setting 2</button>
+                <button>Setting 3</button>
+                <h2>Customize</h2>
+                <button>Setting 1</button>
+                <button>Setting 2</button>
+                <button>Setting 3</button>
+                <hr>
+                <div id="bottomOptions">
+                    <button id="settingsSave">Save And Exit</button>
+                    <button id="settingsExit">Exit Without Saving</button>
+                </div>
+            </div>
         </div>
     <script src="main.js"></script>
     </body>
