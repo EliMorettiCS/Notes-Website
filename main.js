@@ -98,10 +98,12 @@ document.getElementById("save").onclick = function() {
 
 document.getElementById("settings").onclick = function() {
     document.getElementById("settingsPopup").style.display="flex"
+    document.getElementById("settingsPopup").style.opacity = "100%"
 }
 
 document.getElementById("settingsExit").onclick = function() {
-    document.getElementById("settingsPopup").style.display="none"
+    document.getElementById("settingsPopup").style.display = "none"
+    document.getElementById("settingsPopup").style.opacity = "0%"
 }
 
 

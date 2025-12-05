@@ -1,11 +1,24 @@
+:root {
+    
+    --accent: rgb(255, 64, 64);
+    --main: rgb(47, 47, 47);
+    --mainLight: rgb(87,87,87);
+    --mainDark: rgb(27,27,27);
+    --black: rgb(0, 0, 0);
+    --blackGrey: rgb(15, 15, 15);
+    --white: rgb(255,255,255);
+    --whiteGrey: rgb(240, 240, 240);
+    --clear: rgba(0, 0, 0, 0);
+    
+}
+
 * {
     scrollbar-width: none;
     border-color: #000000;
 }
 
 body {
-    color:#141618;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--white);
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 input:focus {
@@ -18,15 +31,16 @@ hr {
     display:flex;
     border-width: 5px;
     border-style:solid;
+    border-color: var(--mainDark);
     border-radius: 10px;
     padding: 5px;
-    box-shadow:-1px -1px, -2px -2px,-3px -3px;
-    background-color: rgb(47, 47, 47);
-    transition: padding .1s, scrollbar-color .3s;
+    box-shadow:-1px -1px var(--mainDark), -2px -2px var(--mainDark),-3px -3px var(--mainDark);
+    background-color: var(--main);
+    transition: all .3s;
     transition-timing-function: ease-in-out;
     overflow: auto;
-    scrollbar-width: auto;
-    scrollbar-color: #141618 #141618;
+    scrollbar-width:thin;
+    scrollbar-color: var(--main) var(--main);
 }
 
 #notes:hover{
@@ -34,7 +48,7 @@ hr {
     border-style:solid;
     border-radius: 10px;
     box-shadow:-1px -1px, -2px -2px,-3px -3px;
-    scrollbar-color: rgb(51, 51, 51) #141618;
+    scrollbar-color: var(--mainLight) var(--main);
 }
 button {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
@@ -49,33 +63,35 @@ button {
     border-width: 3px;
     border-style:solid;
     border-radius: 5px;
-    box-shadow:1px 1px, 2px 2px,3px 3px;
-    transition: box-shadow .1s, translate .1s, filter .05s;
+    border-color: var(--mainDark);
+    box-shadow:1px 1px var(--mainDark), 2px 2px var(--mainDark),3px 3px var(--mainDark);
+    transition: all .1s;
     transition-timing-function: ease-in-out;
     padding: 10px;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--white);
 }
 
 
 #notes button:hover {
     border-width: 3px;
     border-style:solid;
+    border-color: var(--mainDark);
     border-radius: 5px;
-    box-shadow:1px 1px, 2px 2px,3px 3px, 4px 4px, 5px 5px;
-    filter:drop-shadow(1px 1px rgb(255, 255, 255))drop-shadow(-1px -1px white)
-    drop-shadow(-1px 1px white)drop-shadow(2px -1px white);
+    box-shadow:1px 1px var(--mainDark), 2px 2px var(--mainDark),3px 3px var(--mainDark), 4px 4px var(--mainDark), 5px 5px var(--mainDark);
+    filter:drop-shadow(1px 1px var(--white))drop-shadow(-1px -1px var(--white))
+    drop-shadow(-1px 1px var(--white))drop-shadow(2px -1px var(--white));
     translate:0px -2px;
     
 }
 
 #notes button:active {
     translate: 3px 3px;
-    box-shadow:0px 0px;
+    box-shadow:0px 0px var(--mainDark);
 
 }
 
 #notes p {
-    color: rgb(175, 175, 175);
+    color: var(--black);
     font-size: 10px;
 }
 
@@ -93,21 +109,22 @@ button {
     border-width: 3px;
     border-style:solid;
     border-radius: 15px;
-    box-shadow:1px 1px, 2px 2px,3px 3px;
-    transition: box-shadow .1s, translate .1s, filter .1s;
+    border-color: var(--mainDark);
+    box-shadow:1px 1px var(--mainDark), 2px 2px var(--mainDark),3px 3px var(--mainDark);
+    transition: all .1s;
     transition-timing-function: ease-in-out;
     padding: 6px;
-    background-color: rgb(255, 255, 255);
-    color:black;
+    background-color: var(--white);
+    color:var(--mainDark);
     flex-shrink:0;
 }
 
 #options button:hover {
     border-width: 3px;
     border-style:solid;
-    box-shadow:1px 1px, 2px 2px,3px 3px, 4px 4px, 5px 5px;
-    filter:drop-shadow(1px 1px rgb(255, 255, 255))drop-shadow(-1px -1px white)
-    drop-shadow(-1px 1px white)drop-shadow(2px -1px white);
+    box-shadow:1px 1px var(--mainDark), 2px 2px var(--mainDark),3px 3px var(--mainDark), 4px 4px var(--mainDark), 5px 5px var(--mainDark);
+    filter:drop-shadow(1px 1px var(--white))drop-shadow(-1px -1px var(--white))
+    drop-shadow(-1px 1px var(--white))drop-shadow(2px -1px var(--white));
     translate:0px -2px;;
 }
 
@@ -115,38 +132,37 @@ button {
     display:flex;
     flex-direction:column;
     row-gap: 10px;
-    border: solid #141618 5px ;
-    background-color: rgb(47, 47, 47);
+    border: solid var(--mainDark) 5px ;
+    background-color: var(--main);
     border-radius: 15px;
     padding: 10px;
     margin: 10px;
     margin-bottom: 30px;
-    box-shadow:0px 20px;
+    box-shadow: 0px 20px var(--mainDark);
 }
 
 #contents {
     border-style: solid;
     border-width: 4px;
     border-radius: 20px;
-    border-color:#141618;
-    transition: border-radius .3s, border-color .3s, border-width .3s, scrollbar-color .1s;
+    border-color:var(--mainDark);
+    transition: all .2s;
     transition-timing-function: ease-in-out;
-    scrollbar-width:thin;
-    scrollbar-color: rgba(59, 59, 59, 0) rgba(128, 0, 255, 0);
+    scrollbar-width:none;
 }
 #contents:focus {
+    scrollbar-width: thin;
     border-radius: 10px;
-    border-color: rgb(237, 237, 237);
+    border-color: var(--white);
     border-width: 2px;
-    scrollbar-color: rgb(237, 237, 237) rgba(128, 0, 255, 0);
+    scrollbar-color: var(--whiteGrey) var(--clear);
 }
-
 #date{
     border-style: solid;
-    border-color: #000000;
+    border-color: var(--clear);
     border-width: 0px;
-    background-color: #00000000;
-    color: rgb(77, 77, 77);
+    background-color: var(--clear);
+    color: var(--mainLight);
     font-size: 15px;
     font-style: italic;
     font-weight: bold;
@@ -154,20 +170,19 @@ button {
 
 #title {
     border-style: solid;
-    border-color: #00000000;
+    border-color: var(--clear);
     border-width: 1px;
-    background-color: #00000000;
-    color: rgb(245, 252, 206);
+    background-color: var(--clear);
+    color: var(--accent);
     font-size: 30px;
-    font-style: italic;
     font-weight: bold;
     border-radius: 5px;
-    transition: border-color .2s;
+    transition: all .2s;
     transition-timing-function: ease-in-out;
 }
 
 #title:focus {
-    border-color: rgb(77, 77, 77);
+    border-color: var(--mainLight);
 }
 
 #save {
@@ -175,11 +190,12 @@ button {
     border-width: 3px;
     border-style:solid;
     border-radius: 5px;
-    box-shadow:0px 8px;
-    transition: box-shadow .1s, translate .1s, filter .05s, background-color .1s;
+    border-color: var(--mainDark);
+    box-shadow:0px 8px var(--mainDark);
+    transition: all .1s;
     transition-timing-function: ease-in-out;
     padding: 10px;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--white);
     font-weight: bold;
     font-size: large;
 }
@@ -187,9 +203,9 @@ button {
 #save:hover {
     border-width: 3px;
     border-style:solid;
-    box-shadow:0px 13px;
-    filter:drop-shadow(1px 1px rgb(255, 255, 255))drop-shadow(-1px -1px white)
-    drop-shadow(-1px 1px white)drop-shadow(2px -1px white);
+    box-shadow:0px 10px var(--mainDark);
+    filter:drop-shadow(1px 1px var(--white))drop-shadow(-1px -1px white)
+    drop-shadow(-1px 1px var(--white))drop-shadow(2px -1px var(--white));
     translate:0px -2px;;
 }
 
@@ -198,12 +214,13 @@ button {
     border-width: 3px;
     border-style:solid;
     border-radius: 5px;
-    box-shadow:0px 2px;
+    box-shadow:0px 0px;
     translate: 0px 8px;
     padding: 10px;
-    background-color: rgb(255, 145, 0);
+    background-color: var(--accent);
     font-weight: bold;
     font-size: large;
+    color: var(--white);
 }
 
 
@@ -211,41 +228,47 @@ textarea{
     font-size: 18px;
     resize:none;
     padding:10px;
-    color: #141618;
+    color: var(--black);
     outline: none;
 }
 
 #selected {
-    border-color: rgb(255, 145, 0);
+    border-color: var(--accent) !important;
 }
 
+
+
 .popup {
+    opacity: 100%;
     display:none;
     position:fixed;
     top:0;
     left:0;
     width: 100%;
     height:100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, .5);
     backdrop-filter: blur(10px);
     justify-content: center;
     align-items: center;
     font-size: small;
+    transition: all .1s;
+    transition-timing-function: ease-in-out;
+    transition-behavior: allow-discrete;
 }
 
 #PopupContainer {
     padding: 10px;
-    background: #fff;
+    background: var(--white);
     border-radius: 5px;
     text-align: center;
     width:70%;
     height: auto;
     border-style: double;
-    border-color: #000000;
+    border-color: var(--mainDark);
     border-width: 10px;
-    box-shadow:1px 1px, 2px 2px,3px 3px, 4px 4px, 5px 5px, 6px 6px, 7px 7px, 8px 8px;
-    filter:drop-shadow(1px 1px rgb(255, 255, 255))drop-shadow(-1px -1px white)
-    drop-shadow(-1px 1px white)drop-shadow(2px -1px white);
+    box-shadow:1px 1px var(--mainDark), 2px 2px var(--mainDark),3px 3px var(--mainDark), 4px 4px var(--mainDark), 5px 5px var(--mainDark), 6px 6px var(--mainDark), 7px 7px var(--mainDark), 8px 8px var(--mainDark);
+    filter:drop-shadow(1px 1px var(--white))drop-shadow(-1px -1px var(--white))
+    drop-shadow(-1px 1px var(--white))drop-shadow(2px -1px var(--white));
     overflow: auto;
     scrollbar-width: none;
 }
@@ -262,19 +285,20 @@ textarea{
     border-style:solid;
     border-radius: 5px;
     box-shadow:1px 1px, 2px 2px,3px 3px;
-    transition: box-shadow .1s, translate .1s, filter .05s;
+    transition: all .1s;
     transition-timing-function: ease-in-out;
     padding: 10px;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--white);
     font-size: small;
+    border-color: var(--mainDark);
 }
 
 #PopupContainer button:hover {
     border-width: 3px;
     border-style:solid;
     border-radius: 5px;
-    box-shadow:1px 1px, 2px 2px,3px 3px, 4px 4px, 5px 5px;
-    translate:0px -2px; 
+    box-shadow:1px 1px var(--mainDark), 2px 2px var(--mainDark),3px 3px var(--mainDark), 4px 4px var(--mainDark), 5px 5px var(--mainDark);
+    translate:-1px -1px;
 }
 
 #PopupContainer button:active {
