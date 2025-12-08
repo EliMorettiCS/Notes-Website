@@ -9,6 +9,9 @@
     --white: rgb(255,255,255);
     --whiteGrey: rgb(240, 240, 240);
     --clear: rgba(0, 0, 0, 0);
+    --globalRadius: 10px;
+    --colorDependentBorder: solid;
+    --animations: all;
     
 }
 
@@ -32,11 +35,11 @@ hr {
     border-width: 5px;
     border-style:solid;
     border-color: var(--mainDark);
-    border-radius: 10px;
+    border-radius: var(--globalRadius);
     padding: 5px;
     box-shadow:-1px -1px var(--mainDark), -2px -2px var(--mainDark),-3px -3px var(--mainDark);
     background-color: var(--main);
-    transition: all .3s;
+    transition: var(--animations) .3s;
     transition-timing-function: ease-in-out;
     overflow: auto;
     scrollbar-width:thin;
@@ -46,7 +49,7 @@ hr {
 #notes:hover{
     border-width: 5px;
     border-style:solid;
-    border-radius: 10px;
+    border-radius: var(--globalRadius);
     box-shadow:-1px -1px, -2px -2px,-3px -3px;
     scrollbar-color: var(--mainLight) var(--main);
 }
@@ -62,10 +65,10 @@ button {
     margin: 5px;
     border-width: 3px;
     border-style:solid;
-    border-radius: 5px;
+    border-radius: var(--globalRadius);
     border-color: var(--mainDark);
     box-shadow:1px 1px var(--mainDark), 2px 2px var(--mainDark),3px 3px var(--mainDark);
-    transition: all .1s;
+    transition: var(--animations) .1s;
     transition-timing-function: ease-in-out;
     padding: 10px;
     background-color: var(--white);
@@ -76,9 +79,10 @@ button {
     border-width: 3px;
     border-style:solid;
     border-color: var(--mainDark);
-    border-radius: 5px;
     box-shadow:1px 1px var(--mainDark), 2px 2px var(--mainDark),3px 3px var(--mainDark), 4px 4px var(--mainDark), 5px 5px var(--mainDark);
-    filter:drop-shadow(1px 1px var(--white))drop-shadow(-1px -1px var(--white))
+    -webkit-filter:drop-shadow(1px 1px var(--white))drop-shadow(-1px -1px var(--white))
+    drop-shadow(-1px 1px var(--white))drop-shadow(2px -1px var(--white));
+            filter:drop-shadow(1px 1px var(--white))drop-shadow(-1px -1px var(--white))
     drop-shadow(-1px 1px var(--white))drop-shadow(2px -1px var(--white));
     translate:0px -2px;
     
@@ -96,7 +100,6 @@ button {
 }
 
 #options {
-    border-radius: 50px;
     padding: 5px;
     margin: 10px;
     display: flex;
@@ -108,10 +111,10 @@ button {
     margin: 5px;
     border-width: 3px;
     border-style:solid;
-    border-radius: 15px;
+    border-radius: var(--globalRadius);
     border-color: var(--mainDark);
     box-shadow:1px 1px var(--mainDark), 2px 2px var(--mainDark),3px 3px var(--mainDark);
-    transition: all .1s;
+    transition: var(--animations) .1s;
     transition-timing-function: ease-in-out;
     padding: 6px;
     background-color: var(--white);
@@ -123,7 +126,9 @@ button {
     border-width: 3px;
     border-style:solid;
     box-shadow:1px 1px var(--mainDark), 2px 2px var(--mainDark),3px 3px var(--mainDark), 4px 4px var(--mainDark), 5px 5px var(--mainDark);
-    filter:drop-shadow(1px 1px var(--white))drop-shadow(-1px -1px var(--white))
+    -webkit-filter:drop-shadow(1px 1px var(--white))drop-shadow(-1px -1px var(--white))
+    drop-shadow(-1px 1px var(--white))drop-shadow(2px -1px var(--white));
+            filter:drop-shadow(1px 1px var(--white))drop-shadow(-1px -1px var(--white))
     drop-shadow(-1px 1px var(--white))drop-shadow(2px -1px var(--white));
     translate:0px -2px;;
 }
@@ -134,26 +139,24 @@ button {
     row-gap: 10px;
     border: solid var(--mainDark) 5px ;
     background-color: var(--main);
-    border-radius: 15px;
+    border-radius: var(--globalRadius);
     padding: 10px;
     margin: 10px;
     margin-bottom: 30px;
-    box-shadow: 0px 20px var(--mainDark);
+    box-shadow:0px 20px var(--mainDark);
 }
 
 #contents {
     border-style: solid;
     border-width: 4px;
-    border-radius: 20px;
+    border-radius: var(--globalRadius);
     border-color:var(--mainDark);
-    transition: all .2s;
+    transition: var(--animations) .2s;
     transition-timing-function: ease-in-out;
     scrollbar-width:none;
 }
 #contents:focus {
     scrollbar-width: thin;
-    border-radius: 10px;
-    border-color: var(--white);
     border-width: 2px;
     scrollbar-color: var(--whiteGrey) var(--clear);
 }
@@ -176,8 +179,8 @@ button {
     color: var(--accent);
     font-size: 30px;
     font-weight: bold;
-    border-radius: 5px;
-    transition: all .2s;
+    border-radius: var(--globalRadius);
+    transition: var(--animations) .2s;
     transition-timing-function: ease-in-out;
 }
 
@@ -189,10 +192,10 @@ button {
     margin: 5px;
     border-width: 3px;
     border-style:solid;
-    border-radius: 5px;
+    border-radius: var(--globalRadius);
     border-color: var(--mainDark);
     box-shadow:0px 8px var(--mainDark);
-    transition: all .1s;
+    transition: var(--animations) .1s;
     transition-timing-function: ease-in-out;
     padding: 10px;
     background-color: var(--white);
@@ -204,7 +207,9 @@ button {
     border-width: 3px;
     border-style:solid;
     box-shadow:0px 10px var(--mainDark);
-    filter:drop-shadow(1px 1px var(--white))drop-shadow(-1px -1px white)
+    -webkit-filter:drop-shadow(1px 1px var(--white))drop-shadow(-1px -1px white)
+    drop-shadow(-1px 1px var(--white))drop-shadow(2px -1px var(--white));
+            filter:drop-shadow(1px 1px var(--white))drop-shadow(-1px -1px white)
     drop-shadow(-1px 1px var(--white))drop-shadow(2px -1px var(--white));
     translate:0px -2px;;
 }
@@ -213,7 +218,7 @@ button {
     margin: 5px;
     border-width: 3px;
     border-style:solid;
-    border-radius: 5px;
+    border-radius: var(--globalRadius);
     box-shadow:0px 0px;
     translate: 0px 8px;
     padding: 10px;
@@ -234,6 +239,7 @@ textarea{
 
 #selected {
     border-color: var(--accent) !important;
+    border-style: var(--colorDependentBorder) !important;
 }
 
 
@@ -247,11 +253,12 @@ textarea{
     width: 100%;
     height:100%;
     background: rgba(0, 0, 0, .5);
-    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
     justify-content: center;
     align-items: center;
     font-size: small;
-    transition: all .1s;
+    transition: var(--animations) .1s;
     transition-timing-function: ease-in-out;
     transition-behavior: allow-discrete;
 }
@@ -259,7 +266,7 @@ textarea{
 #PopupContainer {
     padding: 10px;
     background: var(--white);
-    border-radius: 5px;
+    border-radius: var(--globalRadius);
     text-align: center;
     width:70%;
     height: auto;
@@ -267,7 +274,9 @@ textarea{
     border-color: var(--mainDark);
     border-width: 10px;
     box-shadow:1px 1px var(--mainDark), 2px 2px var(--mainDark),3px 3px var(--mainDark), 4px 4px var(--mainDark), 5px 5px var(--mainDark), 6px 6px var(--mainDark), 7px 7px var(--mainDark), 8px 8px var(--mainDark);
-    filter:drop-shadow(1px 1px var(--white))drop-shadow(-1px -1px var(--white))
+    -webkit-filter:drop-shadow(1px 1px var(--white))drop-shadow(-1px -1px var(--white))
+    drop-shadow(-1px 1px var(--white))drop-shadow(2px -1px var(--white));
+            filter:drop-shadow(1px 1px var(--white))drop-shadow(-1px -1px var(--white))
     drop-shadow(-1px 1px var(--white))drop-shadow(2px -1px var(--white));
     overflow: auto;
     scrollbar-width: none;
@@ -283,9 +292,9 @@ textarea{
     margin: 5px;
     border-width: 3px;
     border-style:solid;
-    border-radius: 5px;
+    border-radius: var(--globalRadius);
     box-shadow:1px 1px, 2px 2px,3px 3px;
-    transition: all .1s;
+    transition: var(--animations) .1s;
     transition-timing-function: ease-in-out;
     padding: 10px;
     background-color: var(--white);
@@ -296,7 +305,7 @@ textarea{
 #PopupContainer button:hover {
     border-width: 3px;
     border-style:solid;
-    border-radius: 5px;
+    border-radius: var(--globalRadius);
     box-shadow:1px 1px var(--mainDark), 2px 2px var(--mainDark),3px 3px var(--mainDark), 4px 4px var(--mainDark), 5px 5px var(--mainDark);
     translate:-1px -1px;
 }
@@ -317,13 +326,18 @@ textarea{
     flex-grow:1;
 }
 
-#settingsSave {
-    background-color: rgb(144, 255, 142) !important;
-    font-weight:bold;
+#settingsExit {
     font-size:large !important;
 }
 
-#settingsExit {
+.on {
+    background-color: rgb(144, 255, 142) !important;
+}
+
+.off {
     background-color: rgb(255, 142, 142) !important;
-    font-size:large !important;
+}
+
+#color {
+    border-color: var(--accent) !important;
 }
