@@ -80,13 +80,15 @@ document.getElementById("newNote").onclick = function() {
 }
 
 document.getElementById("deleteNote").onclick = function() {
-    notes = notes.splice(0,currentNote)
-    selectNote(notes.length-1)
-    notes[currentNote].changeTitle(document.getElementById("title").value)
-    notes[currentNote].changeText(document.getElementById("contents").value)
-    localStorage.setItem("cloudNotes", JSON.stringify(notes));
+    if (currentNote != 0){
+            notes.splice(currentNote,1)
+            currentNote -= 1;
+            selectNote(currentNote)
+            notes[currentNote].changeTitle(document.getElementById("title").value)
+            notes[currentNote].changeText(document.getElementById("contents").value)
+            localStorage.setItem("cloudNotes", JSON.stringify(notes));
+        }
 }
-
 
 document.getElementById("save").onclick = function() {
     console.log("Save Button Clicked")
@@ -258,4 +260,59 @@ document.getElementById("backgroundMusic").onclick = function() {
     else {
         backgroundMusic = true;
     }
+}
+
+function handleShortcut(event) {
+    if (event.key === "ArrowLeft" && event.shiftKey) {
+        event.preventDefault();
+        if (currentNote != 0){
+            notes[currentNote].changeTitle(document.getElementById("title").value)
+            notes[currentNote].changeText(document.getElementById("contents").value)
+            localStorage.setItem("cloudNotes", JSON.stringify(notes));
+            currentNote -= 1;
+            selectNote(currentNote)
+        }
+    }
+    if (event.key === "ArrowRight" && event.shiftKey) {
+        event.preventDefault();
+        if (currentNote != notes.length-1){
+            notes[currentNote].changeTitle(document.getElementById("title").value)
+            notes[currentNote].changeText(document.getElementById("contents").value)
+            localStorage.setItem("cloudNotes", JSON.stringify(notes));
+            currentNote += 1;
+            selectNote(currentNote)
+        }
+    }
+    if (event.key === "ArrowUp" && event.shiftKey) {
+        event.preventDefault();
+        createNote()
+        selectNote(notes.length-1)
+        notes[currentNote].changeTitle(document.getElementById("title").value)
+        notes[currentNote].changeText(document.getElementById("contents").value)
+        localStorage.setItem("cloudNotes", JSON.stringify(notes));
+    }
+    if (event.key === "ArrowDown" && event.shiftKey) {
+        event.preventDefault();
+        if (currentNote != 0){
+            notes.splice(currentNote,1)
+            currentNote -= 1;
+            selectNote(currentNote)
+            notes[currentNote].changeTitle(document.getElementById("title").value)
+            notes[currentNote].changeText(document.getElementById("contents").value)
+            localStorage.setItem("cloudNotes", JSON.stringify(notes));
+        }
+    }
+}
+document.addEventListener("keydown", handleShortcut);
+
+
+
+document.getElementById("info").onclick = function() {
+    document.getElementById("infoPopup").style.display="flex"
+    document.getElementById("infoPopup").style.opacity = "100%"
+}
+
+document.getElementById("infoExit").onclick = function() {
+    document.getElementById("infoPopup").style.display = "none"
+    document.getElementById("infoPopup").style.opacity = "0%"
 }

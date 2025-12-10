@@ -1,6 +1,5 @@
 :root {
-    
-    --accent: rgb(255, 64, 64);
+    --accent: rgba(255, 127, 127, 1);
     --main: rgb(47, 47, 47);
     --mainLight: rgb(87,87,87);
     --mainDark: rgb(27,27,27);
@@ -12,7 +11,6 @@
     --globalRadius: 10px;
     --colorDependentBorder: solid;
     --animations: all;
-    
 }
 
 * {
@@ -329,6 +327,12 @@ textarea{
 #settingsExit {
     font-size:large !important;
 }
+
+
+#infoExit {
+    font-size:large !important;
+}
+
 
 .on {
     background-color: rgb(144, 255, 142) !important;

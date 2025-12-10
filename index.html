@@ -2,6 +2,7 @@
     <head>
         <link rel="stylesheet" href="main.css">
         <title>Satori Notes</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     </head>
     <body>
         <h1>Simple Notes</h1>
@@ -14,13 +15,14 @@
                 <button id="save">Save</button>
         </div>
         <div id="notes">
-            <p>It seems you have been met with a terrible fate... (ERROR: No Notes To Display)</p>
+            <p></p>
         </div>
         <div id="options">
             <button><img src="plus-symbol.png" alt="plus symbol" width="30" id="newNote" title="Shortcut"></button>
             <button> <img src="delete-symbol.png"alt="delete symbol" width="30" id="deleteNote" title="Shortcut"></button>
             <!-- <button> <img src="clear-symbol.png"alt="clear symbol" width="30" id="clearNotes" title="Shortcut"></button> -->
             <button id="settings" title="Shortcut"><img src="settings-symbol.png"alt="settings symbol" width="30"></button>
+            <button id="info" title="Shortcut"><img src="info-symbol.png"alt="info symbol" width="30"></button>
             <!-- <button><img src="date-symbol.png" alt="date symbol" width="20"></button> -->
             <!-- <button><img src="sort-symbol.png" alt="sort symbol" width="20"></button> -->
             <!-- <button><img src="search-symbol.png" alt="search symbol" width="20"></button> -->
@@ -42,6 +44,18 @@
                 <hr>
                 <div id="bottomOptions">
                     <button id="settingsExit">Exit</button>
+                </div>
+            </div>
+        </div>
+        <div id="infoPopup" class="popup">
+            <div id="PopupContainer">
+                <h1>Info</h1>
+                <hr>
+                <p>Programmed By Eli Moretti</p>
+                <p>Made for a APCSP preformance task final</p>
+                <img src="shortcut-guide.png"alt="shortcut guide" width="300">
+                <div id="bottomOptions">
+                    <button id="infoExit">Exit</button>
                 </div>
             </div>
         </div>
