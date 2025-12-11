@@ -109,8 +109,6 @@ document.getElementById("settingsExit").onclick = function() {
 }
 
 
-
-
 let cloudNotes = JSON.parse(localStorage.getItem("cloudNotes"))
 notes = []
 cloudNotes.forEach((cloudNote) => {
@@ -126,8 +124,32 @@ cloudNotes.forEach((cloudNote) => {
 selectNote(notes.length-1)
 
 let highContrast = false;
-document.getElementById("highContrast").classList.remove("on")
-document.getElementById("highContrast").classList.add("off")
+if (JSON.parse(localStorage.getItem("highContrastLocal")) == null){
+    highContrast = false;
+    localStorage.setItem("highContrastLocal",false)
+}
+else{
+    highContrast = JSON.parse(localStorage.getItem("highContrastLocal"));
+    console.log(highContrast);
+}
+if (highContrast) {
+    document.getElementById("highContrast").classList.remove("off")
+    document.getElementById("highContrast").classList.add("on")
+    document.documentElement.style.setProperty("--mainDark","rgba(0, 0, 0, 1)");
+    document.documentElement.style.setProperty("--main","rgba(255, 255, 255, 1)");
+    document.documentElement.style.setProperty("--mainLight","rgba(0, 0, 0, 1)");
+    document.documentElement.style.setProperty("--blackGrey","rgb(15, 15, 15)");
+    document.documentElement.style.setProperty("--whiteGrey","rgba(0, 0, 0, 1)");
+}
+else {
+    document.getElementById("highContrast").classList.remove("on")
+    document.getElementById("highContrast").classList.add("off")
+    document.documentElement.style.setProperty("--mainDark","rgb(27,27,27)");
+    document.documentElement.style.setProperty("--main","rgb(47, 47, 47)");
+    document.documentElement.style.setProperty("--mainLight","rgb(87,87,87)");
+    document.documentElement.style.setProperty("--blackGrey","rgb(15, 15, 15)");
+    document.documentElement.style.setProperty("--whiteGrey","rgb(240, 240, 240)");
+}
 document.getElementById("highContrast").onclick = function() {
     if (highContrast){
         highContrast = false;
@@ -135,7 +157,6 @@ document.getElementById("highContrast").onclick = function() {
     else {
         highContrast = true;
     }
-
     if (highContrast) {
         document.getElementById("highContrast").classList.remove("off")
         document.getElementById("highContrast").classList.add("on")
@@ -154,11 +175,28 @@ document.getElementById("highContrast").onclick = function() {
         document.documentElement.style.setProperty("--blackGrey","rgb(15, 15, 15)");
         document.documentElement.style.setProperty("--whiteGrey","rgb(240, 240, 240)");
     }
+    localStorage.setItem("highContrastLocal",highContrast)
 }
 
+
 let colorIndependance = false;
-document.getElementById("colorIndependance").classList.remove("on")
-document.getElementById("colorIndependance").classList.add("off")
+if (JSON.parse(localStorage.getItem("colorIndependanceLocal")) == null){
+    colorIndependance = false;
+    localStorage.setItem("colorIndependanceLocal",false)
+}
+else{
+    colorIndependance = JSON.parse(localStorage.getItem("colorIndependanceLocal"));
+}
+if (colorIndependance){
+    document.getElementById("colorIndependance").classList.remove("off")
+    document.getElementById("colorIndependance").classList.add("on")
+    document.documentElement.style.setProperty("--colorDependentBorder","dashed");
+}
+else {
+    document.getElementById("colorIndependance").classList.remove("on")
+    document.getElementById("colorIndependance").classList.add("off")
+    document.documentElement.style.setProperty("--colorDependentBorder","solid");
+}
 document.getElementById("colorIndependance").onclick = function() {
     if (colorIndependance){
         colorIndependance = false;
@@ -176,11 +214,27 @@ document.getElementById("colorIndependance").onclick = function() {
         document.getElementById("colorIndependance").classList.add("off")
         document.documentElement.style.setProperty("--colorDependentBorder","solid");
     }
+    localStorage.setItem("colorIndependanceLocal",colorIndependance)
 }
 
 let animatedElements = true;
-document.getElementById("animatedElements").classList.remove("off")
-document.getElementById("animatedElements").classList.add("on")
+if (JSON.parse(localStorage.getItem("animatedElementsLocal")) == null){
+    animatedElements = true;
+    localStorage.setItem("animatedElementsLocal",true)
+}
+else{
+    animatedElements = JSON.parse(localStorage.getItem("animatedElementsLocal"));
+}
+if (animatedElements){
+    document.getElementById("animatedElements").classList.remove("off")
+    document.getElementById("animatedElements").classList.add("on")
+    document.documentElement.style.setProperty("--animations","all");
+}
+else {
+    document.getElementById("animatedElements").classList.remove("on")
+    document.getElementById("animatedElements").classList.add("off")
+    document.documentElement.style.setProperty("--animations","none");
+}
 document.getElementById("animatedElements").onclick = function() {
     if (animatedElements){
         animatedElements = false;
@@ -198,9 +252,32 @@ document.getElementById("animatedElements").onclick = function() {
         document.getElementById("animatedElements").classList.add("off")
         document.documentElement.style.setProperty("--animations","none");
     }
+    localStorage.setItem("animatedElementsLocal",animatedElements)
 }
 
 let color = 1;
+if (JSON.parse(localStorage.getItem("colorLocal")) == null){
+    color = 1;
+    localStorage.setItem("colorLocal",1)
+}
+else{
+    color = JSON.parse(localStorage.getItem("colorLocal"));
+}
+if (color==1){
+    document.documentElement.style.setProperty("--accent","rgba(255, 127, 127, 1)");
+}
+if (color==2){
+    document.documentElement.style.setProperty("--accent","rgba(129, 127, 255, 1)");
+}
+if (color==3){
+    document.documentElement.style.setProperty("--accent","rgba(185, 255, 185, 1)");
+}
+if (color==4){
+    document.documentElement.style.setProperty("--accent","rgba(250, 163, 255, 1)");
+}
+if (color==5){
+    document.documentElement.style.setProperty("--accent","rgba(255, 176, 127, 1)");
+}
 document.getElementById("color").onclick = function() {
     if (color == 5){
         color = 1;
@@ -223,9 +300,19 @@ document.getElementById("color").onclick = function() {
     if (color==5){
         document.documentElement.style.setProperty("--accent","rgba(255, 176, 127, 1)");
     }
+    localStorage.setItem("colorLocal",color)
 }
 
 let roundness = 15;
+if (JSON.parse(localStorage.getItem("roundnessLocal")) == null){
+    roundness = 15;
+    localStorage.setItem("roundnessLocal",15)
+}
+else{
+    roundness = JSON.parse(localStorage.getItem("roundnessLocal"));
+    console.log(roundness)
+}
+document.documentElement.style.setProperty("--globalRadius",roundness+"px");
 document.getElementById("roundness").onclick = function() {
     if (roundness == 15){
         roundness = 0;
@@ -240,26 +327,7 @@ document.getElementById("roundness").onclick = function() {
         roundness = 15
     }
     document.documentElement.style.setProperty("--globalRadius",roundness+"px");
-}
-
-let soundEffects = false;
-document.getElementById("soundEffects").onclick = function() {
-    if (soundEffects){
-        soundEffects = false;
-    }
-    else {
-        soundEffects = true;
-    }
-}
-
-let backgroundMusic = false;
-document.getElementById("backgroundMusic").onclick = function() {
-    if (backgroundMusic){
-        backgroundMusic = false;
-    }
-    else {
-        backgroundMusic = true;
-    }
+    localStorage.setItem("roundnessLocal",roundness)
 }
 
 function handleShortcut(event) {
