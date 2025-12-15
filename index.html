@@ -10,22 +10,18 @@
         <hr>
         <div id="selectedNote">
                 <textarea id="title" placeholder="Title" rows="1"></textarea>
-                <textarea id="date" placeholder="Date" readonly rows="1"></textarea>
+                <textarea id="date" title="Date the note was created" placeholder="Date" readonly rows="1"></textarea>
                 <textarea id="contents" name="contents" placeholder="Type Your Note Here:" autofocus rows="5"></textarea>
-                <button id="save">Save</button>
+                <button title="Saves your notes" id="save">Save</button>
         </div>
         <div id="notes">
             <p></p>
         </div>
         <div id="options">
-            <button><img src="plus-symbol.png" alt="plus symbol" width="30" id="newNote" title="Shortcut"></button>
-            <button> <img src="delete-symbol.png"alt="delete symbol" width="30" id="deleteNote" title="Shortcut"></button>
-            <!-- <button> <img src="clear-symbol.png"alt="clear symbol" width="30" id="clearNotes" title="Shortcut"></button> -->
-            <button id="settings" title="Shortcut"><img src="settings-symbol.png"alt="settings symbol" width="30"></button>
-            <button id="info" title="Shortcut"><img src="info-symbol.png"alt="info symbol" width="30"></button>
-            <!-- <button><img src="date-symbol.png" alt="date symbol" width="20"></button> -->
-            <!-- <button><img src="sort-symbol.png" alt="sort symbol" width="20"></button> -->
-            <!-- <button><img src="search-symbol.png" alt="search symbol" width="20"></button> -->
+            <button><img src="plus-symbol.png" alt="plus symbol" width="30" id="newNote" title="Create Current Note"></button>
+            <button> <img src="delete-symbol.png"alt="delete symbol" width="30" id="deleteNote" title="Delete Current Note"></button>
+            <button id="settings" title="Go To Settings"><img src="settings-symbol.png"alt="settings symbol" width="30"></button>
+            <button id="info" title="Go To Info"><img src="info-symbol.png"alt="info symbol" width="30"></button>
         </div>
         <div id="settingsPopup" class="popup">
             <div id="PopupContainer">

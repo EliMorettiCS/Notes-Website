@@ -109,16 +109,16 @@ document.getElementById("settingsExit").onclick = function() {
 }
 
 
-let cloudNotes = JSON.parse(localStorage.getItem("cloudNotes"))
+let localNotes = JSON.parse(localStorage.getItem("cloudNotes"))
 notes = []
-cloudNotes.forEach((cloudNote) => {
-    let cloudNoteTitle = cloudNote.title;
-    let cloudNoteContent = cloudNote.text;
-    let cloudNoteDate = cloudNote.date;
+localNotes.forEach((localNote) => {
+    let localNoteTitle = localNote.title;
+    let localNoteContent = localNote.text;
+    let localNoteDate = localNote.date;
     notes.push({...templateNote});
-    notes[notes.length-1].changeTitle(cloudNoteTitle);
-    notes[notes.length-1].changeText(cloudNoteContent);
-    notes[notes.length-1].changeDate(cloudNoteDate);
+    notes[notes.length-1].changeTitle(localNoteTitle);
+    notes[notes.length-1].changeText(localNoteContent);
+    notes[notes.length-1].changeDate(localNoteDate);
 })
 
 selectNote(notes.length-1)
