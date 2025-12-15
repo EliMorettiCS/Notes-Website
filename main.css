@@ -154,7 +154,7 @@ button {
     scrollbar-width:none;
 }
 #contents:focus {
-    scrollbar-width: thin;
+    scrollbar-width:auto;
     border-width: 2px;
     scrollbar-color: var(--whiteGrey) var(--clear);
 }
