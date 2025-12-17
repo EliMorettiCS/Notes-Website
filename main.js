@@ -6,8 +6,11 @@ let notesAmount = 0;
 let notesCreated = 0;
 let Userinput = "";
 let currentNote = 0;
+// Main array that holds all the notes
 let notes = [
 ]
+
+// Template
 let templateNote = {
     title:"",
         text:"",
@@ -35,8 +38,12 @@ let templateNote = {
             this.date = newDate;
         }
 }
+
+// Lets you log all the info for a note
 function logNote(findNum) {
     notes[findNum].logSelf();
+
+// Pushes a copy of the template note into the main notes array
 }
 function createNote() {
     notes.push({...templateNote});
@@ -44,8 +51,10 @@ function createNote() {
     notesCreated=notesCreated+1;
 }
 
+// Takes a note, then selects it letting the user edit it. (most of this is for the website more then the program)
 function selectNote(noteNum) {
     currentNote = noteNum
+    localStorage.setItem("currentNote",currentNote)
     document.getElementById("title").value = notes[noteNum].giveTitle();
     document.getElementById("date").value = notes[noteNum].giveDate();
     document.getElementById("contents").value = notes[noteNum].giveText();
@@ -70,46 +79,54 @@ function selectNote(noteNum) {
     });
 
 }
-
+// Creates a note and then displays it on the website.
 document.getElementById("newNote").onclick = function() {
     createNote()
     selectNote(notes.length-1)
     notes[currentNote].changeTitle(document.getElementById("title").value)
     notes[currentNote].changeText(document.getElementById("contents").value)
-    localStorage.setItem("cloudNotes", JSON.stringify(notes));
+    localStorage.setItem("localNotes", JSON.stringify(notes));
 }
 
+// Deletes a note and displays the next note instead.
 document.getElementById("deleteNote").onclick = function() {
-    if (currentNote != 0){
-            notes.splice(currentNote,1)
+        notes.splice(currentNote,1)
+        if (currentNote != 0){
             currentNote -= 1;
-            selectNote(currentNote)
-            notes[currentNote].changeTitle(document.getElementById("title").value)
-            notes[currentNote].changeText(document.getElementById("contents").value)
-            localStorage.setItem("cloudNotes", JSON.stringify(notes));
-    }
+            localStorage.setItem("currentNote",currentNote)
+        }
+        else{
+            currentNote = 0
+            localStorage.setItem("currentNote",currentNote)
+        }
+        selectNote(currentNote)
+        notes[currentNote].changeTitle(document.getElementById("title").value)
+        notes[currentNote].changeText(document.getElementById("contents").value)
+        localStorage.setItem("localNotes", JSON.stringify(notes));
 }
 
+// Saves the info being displayed on the website into the array.
 document.getElementById("save").onclick = function() {
     console.log("Save Button Clicked")
     notes[currentNote].changeTitle(document.getElementById("title").value)
     notes[currentNote].changeText(document.getElementById("contents").value)
-    localStorage.setItem("cloudNotes", JSON.stringify(notes));
+    localStorage.setItem("localNotes", JSON.stringify(notes));
     selectNote(currentNote)
 }
 
+// Settings popup handling
 document.getElementById("settings").onclick = function() {
     document.getElementById("settingsPopup").style.display="flex"
     document.getElementById("settingsPopup").style.opacity = "100%"
 }
-
+// Settings popup handling
 document.getElementById("settingsExit").onclick = function() {
     document.getElementById("settingsPopup").style.display = "none"
     document.getElementById("settingsPopup").style.opacity = "0%"
 }
 
-
-let localNotes = JSON.parse(localStorage.getItem("cloudNotes"))
+// Clones notes array into localStorage copy
+let localNotes = JSON.parse(localStorage.getItem("localNotes"))
 notes = []
 localNotes.forEach((localNote) => {
     let localNoteTitle = localNote.title;
@@ -121,9 +138,14 @@ localNotes.forEach((localNote) => {
     notes[notes.length-1].changeDate(localNoteDate);
 })
 
-selectNote(notes.length-1)
-
-
+// Selects the last selected note on website leave.
+if (JSON.parse(localStorage.getItem("currentNote")) == null){
+    localStorage.setItem("currentNote",0)
+}
+else{
+    currentNote = localStorage.getItem("currentNote");
+}
+selectNote(currentNote)
 // !!!! FOR AP GRADER: Everything past this point is for saving website settings onto user storage. it does NOT relate
 // to the overall project and the requirements.
 
@@ -338,8 +360,9 @@ function handleShortcut(event) {
         if (currentNote != 0){
             notes[currentNote].changeTitle(document.getElementById("title").value)
             notes[currentNote].changeText(document.getElementById("contents").value)
-            localStorage.setItem("cloudNotes", JSON.stringify(notes));
+            localStorage.setItem("localNotes", JSON.stringify(notes));
             currentNote -= 1;
+            localStorage.setItem("currentNote",currentNote)
             selectNote(currentNote)
         }
     }
@@ -348,8 +371,9 @@ function handleShortcut(event) {
         if (currentNote != notes.length-1){
             notes[currentNote].changeTitle(document.getElementById("title").value)
             notes[currentNote].changeText(document.getElementById("contents").value)
-            localStorage.setItem("cloudNotes", JSON.stringify(notes));
+            localStorage.setItem("localNotes", JSON.stringify(notes));
             currentNote += 1;
+            localStorage.setItem("currentNote",currentNote)
             selectNote(currentNote)
         }
     }
@@ -359,18 +383,23 @@ function handleShortcut(event) {
         selectNote(notes.length-1)
         notes[currentNote].changeTitle(document.getElementById("title").value)
         notes[currentNote].changeText(document.getElementById("contents").value)
-        localStorage.setItem("cloudNotes", JSON.stringify(notes));
+        localStorage.setItem("localNotes", JSON.stringify(notes));
     }
     if (event.key === "ArrowDown" && event.shiftKey) {
         event.preventDefault();
+        notes.splice(currentNote,1)
         if (currentNote != 0){
-            notes.splice(currentNote,1)
             currentNote -= 1;
-            selectNote(currentNote)
-            notes[currentNote].changeTitle(document.getElementById("title").value)
-            notes[currentNote].changeText(document.getElementById("contents").value)
-            localStorage.setItem("cloudNotes", JSON.stringify(notes));
+            localStorage.setItem("currentNote",currentNote)
         }
+        else{
+            currentNote = 0
+            localStorage.setItem("currentNote",currentNote)
+        }
+        selectNote(currentNote)
+        notes[currentNote].changeTitle(document.getElementById("title").value)
+        notes[currentNote].changeText(document.getElementById("contents").value)
+        localStorage.setItem("localNotes", JSON.stringify(notes));
     }
 }
 document.addEventListener("keydown", handleShortcut);
